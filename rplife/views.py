@@ -1,6 +1,7 @@
 import curses
 from time import sleep
 from rplife.grid import LifeGrid
+__all__ = ["CursesView"]
 
 
 class CursesView:
