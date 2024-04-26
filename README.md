@@ -7,7 +7,6 @@ Bruker kan selv velge alive og dead symboler
 pip install windows-curses
 
 
-
 # Installing
 
 python -m venv ./venv
