@@ -5,8 +5,9 @@ __all__ = ["CursesView"]
 
 
 class CursesView:
-    def __init__(self, pattern, gen=10, frame_rate=7, bbox=(0, 0, 20, 20)):
+    def __init__(self, pattern, alivesymbol, gen=10, frame_rate=7, bbox=(0, 0, 20, 20)):
         self.pattern = pattern
+        self.alivesymbol= alivesymbol
         self.gen = gen
         self.frame_rate = frame_rate
         self.bbox = bbox
@@ -16,7 +17,7 @@ class CursesView:
         curses.wrapper(self._draw)
 
     def _draw(self, screen):
-        current_grid = LifeGrid(self.pattern)
+        current_grid = LifeGrid(self.pattern, self.alivesymbol)
         curses.curs_set(0)
         screen.clear()
 

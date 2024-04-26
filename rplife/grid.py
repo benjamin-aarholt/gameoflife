@@ -4,8 +4,9 @@ ALIVE = "♥"
 DEAD = "‧"
 
 class LifeGrid:
-    def __init__(self, pattern):
+    def __init__(self, pattern, alivesymbol):
         self.pattern = pattern
+        self.alivesymbol= alivesymbol
 
     def evolve(self):
         neighbors = (
@@ -37,7 +38,7 @@ class LifeGrid:
         display = [self.pattern.name.center(2 * (end_col - start_col))]
         for row in range(start_row, end_row):
             display_row = [
-                ALIVE if (row, col) in self.pattern.alive_cells else DEAD
+                self.alivesymbol if (row, col) in self.pattern.alive_cells else DEAD
                 for col in range(start_col, end_col)
             ]
             display.append(" ".join(display_row))

@@ -16,7 +16,13 @@ def get_command_line_args():
         "--pattern",
         choices=[pat.name for pat in patterns.get_all_patterns()],
         default="Blinker",
-        help="take a pattern for the Game of Life (default: %(default)s)",
+        help="take a pattern for the Game of Life (default: %(default)s)",     
+    )
+    parser.add_argument(
+        "-s",
+        "--symbol",
+        default="♥",
+        help="symbolet som representerer en levende celle"
     )
     parser.add_argument(
         "-a",
