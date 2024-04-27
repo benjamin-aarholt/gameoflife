@@ -1,5 +1,9 @@
-import argparse
-
+"""
+I denne filen importerer den først argparse-modulen. Deretter importerer det noen nødvendige objekter fra rplife.
+Her defineres alle lovlige argumenter man kan bruke når man starter programmet.
+Man kan også starte programmet med --help og da sørger argparse at vi får en output med en infoliste om hva de forskjellige kommandoene gjør.
+"""
+import argparse 
 from rplife import __version__, patterns, views
 
 def get_command_line_args():
@@ -29,6 +33,12 @@ def get_command_line_args():
         "--all",
         action="store_true",
         help="show all available patterns in a sequence",
+        )
+    parser.add_argument(
+        "-r",
+        "--random",
+        action="store_true",
+        help="makes the pattern total random and not using a predefined pattern",
     )
     parser.add_argument(
         "-v",

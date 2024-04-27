@@ -1,14 +1,14 @@
 import collections
 
-ALIVE = "♥"
-DEAD = "‧"
+ALIVE = "♥" # variabel for hvilket symbol som brukes for levende celler (deafult)
+DEAD = "‧" # variabel for hvilken symbol som brukes for døde celler
 
 class LifeGrid:
     def __init__(self, pattern, alivesymbol):
         self.pattern = pattern
         self.alivesymbol= alivesymbol
 
-    def evolve(self):
+    def evolve(self): # denne koden er for å hvise hvilket kordinater celler skal leve eller død etter en evulosjon
         neighbors = (
             (-1, -1),  # Above left
             (-1, 0),  # Above
@@ -24,7 +24,7 @@ class LifeGrid:
             for drow, dcol in neighbors:
                 num_neighbors[(row + drow, col + dcol)] += 1
 
-        stay_alive = {
+        stay_alive = { # Finn cellene som vil forbli i live ved å identifisere naboer som har to eller tre levende naboer selv, og deretter finne de felles cellene med de allerede levende cellene.
             cell for cell, num in num_neighbors.items() if num in {2, 3}
         } & self.pattern.alive_cells
         come_alive = {

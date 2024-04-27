@@ -1,4 +1,5 @@
 from typing import Any
+import random
 
 from dataclasses import dataclass
 from pathlib import Path
@@ -32,4 +33,22 @@ class Pattern:
             name,
             alive_cells={tuple(cell) for cell in toml_data["alive_cells"]},
         )
+
+    @classmethod
+    def from_random(cls):
+        cells = set()
+
+        start_col, start_row, end_col, end_row = (0, 0, 20, 20)
+        for row in range(start_row, end_row):
+            for col in range(start_col, end_col):
+                alive = random.choice((True, False))
+                if alive:
+                    cells.add((col, row))
+
+
+        return cls(
+            'Random',
+            alive_cells=cells,
+        )
+     
     
